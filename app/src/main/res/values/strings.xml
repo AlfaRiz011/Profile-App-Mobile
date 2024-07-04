@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Ujikom</string>
+    <string name="edit_image_profile">Edit Image</string>
+    <string name="content_description">IMAGE</string>
+    <string name="Username">Nama</string>
+    <string name="Nim">Nim</string>
+    <string name="Alamat">Alamat</string>
+    <string name="TempatLahir">Tempat Lahir</string>
+    <string name="TanggalLahir">Tanggal Lahir</string>
+    <string name="Kelamin">Jenis Kelamin</string>
+    <string name="Save">Save</string>
 </resources>
