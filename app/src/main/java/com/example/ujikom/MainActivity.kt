@@ -1,14 +1,16 @@
 package com.example.ujikom
+
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import androidx.activity.enableEdgeToEdge
 import com.example.ujikom.databinding.ActivityMainBinding
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
@@ -21,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     private lateinit var userProfile: UserProfile
     private var selectedImageUri: Uri? = null
+    private var isValid: Boolean = true
 
     private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
@@ -67,20 +70,61 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveUserProfile() {
-        userProfile = UserProfile(
-            name = binding.editNameText.text.toString(),
-            nim = binding.editNimText.text.toString(),
-            alamat = binding.editAlamatText.text.toString(),
-            tanggalLahir = binding.editTanggalLahirText.text.toString(),
-            tempatLahir = binding.editTempatLahirText.text.toString(),
-            kelamin = binding.editKelaminText.text.toString(),
-            photoUri = selectedImageUri.toString()
-        )
+        isValid = true
+        binding.apply {
+            val name = editNameText.text.toString().trim()
+            val nim = editNimText.text.toString().trim()
+            val alamat = editAlamatText.text.toString().trim()
+            val tanggalLahir = editTanggalLahirText.text.toString().trim()
+            val tempatLahir = editTempatLahirText.text.toString().trim()
+            val kelamin = editKelaminText.text.toString().trim()
 
-        val intent = Intent(this, HasilActivity::class.java).apply {
-            putExtra("USER_PROFILE", userProfile)
+            when {
+                name.isBlank() -> {
+                    editNameText.error = "Nama harus diisi"
+                    isValid = false
+                }
+                nim.isBlank() -> {
+                    editNimText.error = "NIM harus diisi"
+                    isValid = false
+                }
+                alamat.isBlank() -> {
+                    editAlamatText.error = "Alamat harus diisi"
+                    isValid = false
+                }
+                tanggalLahir.isBlank() -> {
+                    editTanggalLahirText.error = "Tanggal lahir harus diisi"
+                    isValid = false
+                }
+                tempatLahir.isBlank() -> {
+                    editTempatLahirText.error = "Tempat lahir harus diisi"
+                    isValid = false
+                }
+                kelamin.isBlank() -> {
+                    editKelaminText.error = "Jenis kelamin harus dipilih"
+                    isValid = false
+                }
+            }
+
+            if (isValid) {
+                userProfile = UserProfile(
+                    name = name,
+                    nim = nim,
+                    alamat = alamat,
+                    tanggalLahir = tanggalLahir,
+                    tempatLahir = tempatLahir,
+                    kelamin = kelamin,
+                    photoUri = selectedImageUri?.toString() ?: ""
+                )
+
+                val intent = Intent(this@MainActivity, HasilActivity::class.java).apply {
+                    putExtra("USER_PROFILE", userProfile)
+                }
+                startActivity(intent)
+            } else {
+                Toast.makeText(this@MainActivity, "Gagal menyimpan profil", Toast.LENGTH_SHORT).show()
+            }
         }
-        startActivity(intent)
     }
 
     private fun showDatePickerDialog() {
@@ -88,7 +132,7 @@ class MainActivity : AppCompatActivity() {
             .setValidator(DateValidatorPointForward.now())
 
         val datePicker = MaterialDatePicker.Builder.datePicker()
-            .setTitleText("Select date")
+            .setTitleText("Pilih Tanggal")
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
             .setCalendarConstraints(constraintsBuilder.build())
             .build()

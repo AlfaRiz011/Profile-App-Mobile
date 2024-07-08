@@ -1,5 +1,6 @@
 package com.example.ujikom
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -35,6 +36,11 @@ class HasilActivity : AppCompatActivity() {
 
             val photoUri = Uri.parse(profile.photoUri)
             binding.imageViewProfile.setImageURI(photoUri)
+        }
+
+        binding.editBiodata.setOnClickListener {
+            val intent = Intent(this@HasilActivity, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }

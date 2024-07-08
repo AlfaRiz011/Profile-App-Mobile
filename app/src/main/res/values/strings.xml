@@ -9,4 +9,8 @@
     <string name="TanggalLahir">Tanggal Lahir</string>
     <string name="Kelamin">Jenis Kelamin</string>
     <string name="Save">Save</string>
+    <string name="gagal_save_message">Gagal Menyimpan Data</string>
+    <string name="Divider">:</string>
+    <string name="biodata">Biodata Mahasiswa</string>
+    <string name="editBiodata">Edit Biodata</string>
 </resources>
