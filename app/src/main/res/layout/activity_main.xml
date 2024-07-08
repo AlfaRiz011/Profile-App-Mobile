@@ -64,6 +64,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:maxLength="25"
+            android:inputType="number"
             android:hint="@string/Nim"/>
     </com.google.android.material.textfield.TextInputLayout>
 

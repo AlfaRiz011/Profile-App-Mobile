@@ -13,14 +13,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.ujikom.databinding.ActivityMainBinding
 import com.google.android.material.datepicker.CalendarConstraints
-import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     private lateinit var userProfile: UserProfile
     private var selectedImageUri: Uri? = null
     private var isValid: Boolean = true
@@ -47,6 +46,11 @@ class MainActivity : AppCompatActivity() {
 
         setInput()
         setupImagePicker()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 
     private fun setInput() {
@@ -121,6 +125,7 @@ class MainActivity : AppCompatActivity() {
                     putExtra("USER_PROFILE", userProfile)
                 }
                 startActivity(intent)
+                finish()
             } else {
                 Toast.makeText(this@MainActivity, "Gagal menyimpan profil", Toast.LENGTH_SHORT).show()
             }
@@ -129,7 +134,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun showDatePickerDialog() {
         val constraintsBuilder = CalendarConstraints.Builder()
-            .setValidator(DateValidatorPointForward.now())
 
         val datePicker = MaterialDatePicker.Builder.datePicker()
             .setTitleText("Pilih Tanggal")

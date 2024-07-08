@@ -41,6 +41,12 @@ class HasilActivity : AppCompatActivity() {
         binding.editBiodata.setOnClickListener {
             val intent = Intent(this@HasilActivity, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }

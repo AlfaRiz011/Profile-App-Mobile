@@ -66,11 +66,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
+                android:layout_marginHorizontal="10dp"
                 android:text="@string/Divider"/>
 
             <TextView
                 android:id="@+id/textViewName"
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
@@ -95,11 +96,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
+                android:layout_marginHorizontal="10dp"
                 android:text="@string/Divider"/>
 
             <TextView
                 android:id="@+id/textViewNim"
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
@@ -124,11 +126,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
+                android:layout_marginHorizontal="10dp"
                 android:text="@string/Divider"/>
 
             <TextView
                 android:id="@+id/textViewAlamat"
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
@@ -153,11 +156,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
+                android:layout_marginHorizontal="10dp"
                 android:text="@string/Divider"/>
 
             <TextView
                 android:id="@+id/textViewTanggalLahir"
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
@@ -182,11 +186,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
+                android:layout_marginHorizontal="10dp"
                 android:text="@string/Divider"/>
 
             <TextView
                 android:id="@+id/textViewTempatLahir"
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
@@ -211,11 +216,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
+
+                android:layout_marginHorizontal="10dp"
                 android:text="@string/Divider"/>
 
             <TextView
                 android:id="@+id/textViewKelamin"
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
@@ -234,6 +241,17 @@
         app:layout_constraintStart_toStartOf="@id/table"
         app:layout_constraintEnd_toEndOf="@id/table"
         app:layout_constraintTop_toBottomOf="@id/table"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/alpa"
+        android:textStyle="italic"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
